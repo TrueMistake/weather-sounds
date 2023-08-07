@@ -1,16 +1,15 @@
 (function () {
-  const items = document.querySelectorAll('.sounds-item');
-  const sounds = document.querySelectorAll('.sounds-item audio');
-  const bodyBg:HTMLDivElement = document.querySelector('.bg-blur');
-  const volume:HTMLInputElement = document.querySelector('.range');
+  const items = document.querySelectorAll<HTMLElement>('.sounds-item');
+  const sounds = document.querySelectorAll<HTMLAudioElement>('.sounds-item audio');
+  const bodyBg = document.querySelector<HTMLDivElement>('.bg-blur');
+  const volume = document.querySelector<HTMLInputElement>('.range');
 
   const playSound = (item: Element): void => {
     pauseAllSounds();
     removeAllClass();
     item.classList.add('play');
-    item.querySelector('audio').play();
-    item.querySelector('audio').dataset.play = 'true';
-    console.log('volume', item.querySelector('audio').volume)
+    item.querySelector<HTMLAudioElement>('audio').play();
+    item.querySelector<HTMLAudioElement>('audio').dataset.play = 'true';
   }
 
   const pauseAllSounds = (): void => {
@@ -21,13 +20,13 @@
     items.forEach((item:HTMLAudioElement) => item.classList.remove('play'));
   }
 
-  const pauseSound = (item): void => {
+  const pauseSound = (item:HTMLElement): void => {
     item.classList.remove('play');
-    item.querySelector('audio').pause();
-    item.querySelector('audio').dataset.play = 'false';
+    item.querySelector<HTMLAudioElement>('audio').pause();
+    item.querySelector<HTMLAudioElement>('audio').dataset.play = 'false';
   }
 
-  const changeBg = (item): void => {
+  const changeBg = (item:HTMLElement): void => {
     bodyBg.style.backgroundImage = `url(./assets/${item.dataset.bg}.jpg)`
   }
 

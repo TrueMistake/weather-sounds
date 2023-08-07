@@ -9,7 +9,6 @@
         item.classList.add('play');
         item.querySelector('audio').play();
         item.querySelector('audio').dataset.play = 'true';
-        console.log('volume', item.querySelector('audio').volume);
     };
     var pauseAllSounds = function () {
         sounds.forEach(function (item) { return item.pause(); });
